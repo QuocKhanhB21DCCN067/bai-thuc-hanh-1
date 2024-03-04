@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thông tin tiểu sử và khảo sát</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="submit"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+
+    .question-group {
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        margin-bottom: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container" id="surveyContainer">
+    <h2>Thông tin tiểu sử và khảo sát</h2>
+    <form id="surveyForm">
+        <div class="form-group">
+            <label for="fullName">Họ và tên:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Ngày tháng năm sinh:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="cccd">CCCD:</label>
+            <input type="text" id="cccd" name="cccd" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Địa chỉ thường trú:</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <input type="submit" class="btn-submit" value="Gửi">
+    </form>
+
+
+    <div id="questionList" class="hidden">
+        <div class="question-group">
+            <h3>Nhóm 1: Lựa chọn đúng/sai</h3>
+            <ul id="group1">
+
+            </ul>
+        </div>
+        <div class="question-group">
+            <h3>Nhóm 2: Chọn 1 trong 4 đáp án</h3>
+            <ul id="group2">
+
+            </ul>
+        </div>
+        <div class="question-group">
+            <h3>Nhóm 3: Chọn nhiều đáp án</h3>
+            <ul id="group3">
+
+            </ul>
+        </div>
+        <div class="question-group">
+            <h3>Nhóm 4: Trả lời tự luận</h3>
+            <ul id="group4">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('surveyForm');
+    const surveyContainer = document.getElementById('surveyContainer');
+    const questionList = document.getElementById('questionList');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        surveyContainer.classList.add('hidden');
+
+
+        questionList.classList.remove('hidden');
+        
+
+        const group1 = document.getElementById('group1');
+        const group2 = document.getElementById('group2');
+        const group3 = document.getElementById('group3');
+        const group4 = document.getElementById('group4');
+
+
+        for (let i = 1; i <= 10; i++) {
+            const li = document.createElement('li');
+            li.textContent = `Câu hỏi ${i} (Nhóm 1)`;
+            group1.appendChild(li);
+        }
+
+
+        for (let i = 1; i <= 10; i++) {
+            const li = document.createElement('li');
+            li.textContent = `Câu hỏi ${i} (Nhóm 2)`;
+            group2.appendChild(li);
+        }
+
+
+        for (let i = 1; i <= 10; i++) {
+            const li = document.createElement('li');
+            li.textContent = `Câu hỏi ${i} (Nhóm 3)`;
+            group3.appendChild(li);
+        }
+
+
+        for (let i = 1; i <= 10; i++) {
+            const li = document.createElement('li');
+            li.textContent = `Câu hỏi ${i} (Nhóm 4)`;
+            group4.appendChild(li);
+        }
+    });
+</script>
+</body>
+</html>
